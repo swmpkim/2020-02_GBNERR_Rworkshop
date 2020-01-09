@@ -18,9 +18,6 @@
 reqpackages <- c("tidyverse", "tidyr", "rmarkdown", "knitr",
                  "here", "janitor", "shiny", "ggThemeAssist")
 
-# Kim to-dos: 
-# check version of tidyr
-
 
 ## now try loading each one and see if it works
 # set up an output vector
@@ -38,7 +35,19 @@ for(i in seq_along(reqpackages)){
 pkgs_missing <- reqpackages[!pkg_result]
 
 
+
+# check tidyr version
+# only if it was there
+tidyr_ver <- FALSE
+if(pkg_result[which(reqpackages == "tidyr")]){
+    tidyr_ver <- packageVersion("tidyr") >= 1.0
+}
+
+
+
 # print the results to the console
-if(length(pkgs_missing) == 0){
+if(length(pkgs_missing) == 0 && tidyr_ver){
         message("\n \nAll required packages are installed and loading properly! \n \n")
-} else{ message("\n \nYou need to install the following packages: "); cat(pkgs_missing, sep="\n") }
+} else if(length(pkgs_missing) == 0 && !tidyr_ver){
+    message("\n \nYour version of tidyr needs to be updated \nto at least 1.0.0; \ntry running install.packages(\"tidyr\") \n \nAll other packages are loading \n \n")
+} else { message("\n \nYou need to install the following packages: "); cat(pkgs_missing, sep="\n") }

@@ -16,7 +16,8 @@
 
 # list of packages we need to have installed for our workflow
 reqpackages <- c("tidyverse", "tidyr", "rmarkdown", "knitr",
-                 "here", "janitor", "shiny", "ggThemeAssist")
+                 "here", "janitor", "shiny", "ggThemeAssist",
+                 "patchwork")
 
 
 ## now try loading each one and see if it works
@@ -37,7 +38,8 @@ pkgs_missing <- reqpackages[!pkg_result]
 
 
 # check tidyr version
-# only if it was there
+# only if tidyr was there; otherwise it will show up
+# in the missing packages message anyway
 tidyr_ver <- FALSE
 if(pkg_result[which(reqpackages == "tidyr")]){
     tidyr_ver <- packageVersion("tidyr") >= 1.0

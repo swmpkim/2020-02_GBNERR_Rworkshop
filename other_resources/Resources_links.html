@@ -1473,6 +1473,12 @@ div.tocify {
   border-radius: 0px;
 }
 
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
 
 </style>
 
@@ -1554,8 +1560,9 @@ Some of my favorites are:</p>
 <h2>R and the Tidyverse Generally</h2>
 <p><strong><a href="https://r4ds.had.co.nz/">R For Data Science</a></strong> - by Hadley Wickham and Garrett Grolemund</p>
 <p><strong><a href="https://bookdown.org/chesterismay/rbasics/">Getting used to R, RStudio, and R Markdown</a></strong> - by Chester Ismay</p>
+<p><strong><a href="https://moderndive.com/index.html">ModernDive: Statistical Inference via Data Science</a></strong> - by Chester Ismay and Albert Y. Kim. Don’t let the title scare you; there’s a lot in here about R and RStudio generally.</p>
 <p><strong><a href="https://adv-r.hadley.nz/">Advanced R</a></strong> , 2nd edition - by Hadley Wickham</p>
-<p><strong><a href="http://r-pkgs.had.co.nz/">R Packages</a></strong> - by Hadley Wickham</p>
+<p><strong><a href="http://r-pkgs.org">R Packages</a></strong> , 2nd edition in progress - by Hadley Wickham and Jenny Bryan</p>
 </div>
 <div id="data-viz" class="section level2">
 <h2>Data Viz</h2>
@@ -1581,6 +1588,7 @@ Some of my favorites are:</p>
 <p>Class notes: <strong><a href="https://sakai.unc.edu/access/content/group/2842013b-58f5-4453-aa8d-3e01bacbfc3d/public/Ecol562_Spring2012/index.html">Statistics for Environmental Science</a></strong> - lecture notes include a lot of useful topics, including GAMs, survival analysis, spatial and spatio-temporal stats, regression trees.</p>
 <p>Class notes: <strong><a href="https://sakai.unc.edu/access/content/group/3d1eb92e-7848-4f55-90c3-7c72a54e7e43/public/index.html">Statistical Methods in Ecology</a></strong> - same professor as above. More introductory.</p>
 <p>Book: <strong><a href="https://learningstatisticswithr.com">Learning Statistics with R</a></strong> - by Danielle Navarro. Aimed at psychology researchers but has great motivating examples of why we even use statistics in the first place. Includes lots of clearly explained, worked examples using R code.</p>
+<p>Book: <strong><a href="https://moderndive.com/index.html">ModernDive: Statistical Inference via Data Science</a></strong> - by Chester Ismay and Albert Y. Kim.</p>
 <p><br> <br></p>
 </div>
 
@@ -1630,7 +1638,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -1639,7 +1647,7 @@ $(document).ready(function ()  {
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
-    options.showAndHide = true;
+    options.showAndHide = false;
     options.smoothScroll = true;
 
     // tocify

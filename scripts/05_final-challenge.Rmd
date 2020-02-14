@@ -1,0 +1,151 @@
+---
+title: "Final Challenge"
+author: "Kim Cressman"
+output: 
+    html_document:
+        toc: true
+        toc_depth: 3
+        toc_float:
+            collapsed: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Setup:
+
+```{r, message = FALSE, warning = FALSE}
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(here)
+library(ggplot2)
+```
+
+
+
+# Final challenge  
+
+For our final challenge, you are going to put together the things that you've learned throughout the day. You will write a loop to read in each of a few files, and produce a graph and two summary tables (one needs to be pivoted) for each.  
+
+
+## 1. Build up vector of file names
+
+We can list the files in a directory using the `dir()` function:     
+
+```{r}
+dir(here::here("data", "final_challenge"))
+```
+
+If you only want files that include a certain string, you can include a `pattern` argument (for example, if you had mutiple file types in the directory but only wanted to include CSVs; or if you only wanted to include certain stations; etc.)  
+
+```{r}
+dir(here::here("data", "final_challenge"), pattern = ".csv")
+```
+
+
+Assign those to a vector named `my_files`. This is the file vector that we'll loop through.  
+
+```{r}
+
+```
+
+
+
+## 2. Write functions  
+
+Write a function to calculate standard error. Name it `sterr`. Recall that the body of the function should look something like this:  
+
+```{r}
+sd( data, na.rm = TRUE) / sqrt( sum(!is.na( data )) )
+
+sterr <- ---------
+```
+
+Write another function to calculate depth in feet, from meters. (Yes, I know this math is probably easier to just *do* in a call to `mutate`. Humor me and practice your function-writing.) 
+
+The conversion is:  
+`feet = meters * 3.28`  
+
+```{r}
+m_to_ft <- ---------
+```
+
+
+
+## 3. Fill in the loop structure  
+
+
+```{r}
+for(i in -------(-----)){
+    
+    # find the file
+    in_file <- here::here("data", "final_challenge", --------)
+    
+    # read in the file
+    dat <- ------(in_file, stringsAsFactors = FALSE)
+    
+    
+    
+    # wrangle the data frame a bit
+    dat <- dat %>% 
+        mutate(
+            # fill in your function to turn depth in m into depth in ft
+            depth_ft = -----(----),
+            # fill in the function needed to make sure date is correctly "seen"
+            date = lubridate::----(------),
+            # the lines below are "gimmes" because we haven't discussed them
+            # but: they pull out the portion of the date we want, and 
+            # we can use that later
+            year = lubridate::year(date),
+            month = lubridate::month(date))
+    
+    
+    
+    # make AND PRINT a line graph of depth in feet on the y-axis, 
+    # by date on the x-axis, and where each year is a different color 
+    # add in labels and themes if you want to make it look nice!
+    
+    p <- ggplot(dat) +
+        ---------
+    
+    
+        # did you remember to print the result?
+        
+        
+    
+    # now generate and print a summary table, grouped by year,
+    # to show median, mean, and sterr of depth_ft
+    
+    # hint: if you use a filter statement to get rid of 
+    # rows where depth_ft is NA  (in the dplyr script we learned how
+    # to negate "is.na" ), you don't have to worry about
+    # using "na.rm = TRUE" in each individual summary function
+    dat %>% 
+        filter(!is.na(depth_ft)) %>%
+        -----------
+        
+        
+        
+        # did you remember to print the result?
+        
+        
+        
+    
+    # Group by year and month, calculate mean of depth_ft,
+    # and pivot the data frame so you get
+    # a table with one row per year, and one column per month
+    # the values in each cell are the mean depth for that month/year combination
+    
+    
+    dat %>% 
+        --------------
+        
+        
+        # did you remember to print the result?
+        
+}
+```
+
+

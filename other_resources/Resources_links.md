@@ -4,7 +4,9 @@ output:
   html_document: 
     keep_md: yes
     toc: yes
-    toc_float: true
+    toc_depth: 2
+    toc_float: 
+      collapsed: false
 ---
 
 
@@ -70,11 +72,13 @@ Some more specialized than others
 
 __[R For Data Science](https://r4ds.had.co.nz/)__ - by Hadley Wickham and Garrett Grolemund  
 
-__[Getting used to R, RStudio, and R Markdown](https://bookdown.org/chesterismay/rbasics/)__ - by Chester Ismay
+__[Getting used to R, RStudio, and R Markdown](https://bookdown.org/chesterismay/rbasics/)__ - by Chester Ismay  
+
+__[ModernDive: Statistical Inference via Data Science](https://moderndive.com/index.html)__ - by Chester Ismay and Albert Y. Kim. Don't let the title scare you; there's a lot in here about R and RStudio generally.    
 
 __[Advanced R](https://adv-r.hadley.nz/)__ , 2nd edition - by Hadley Wickham  
 
-__[R Packages](http://r-pkgs.had.co.nz/)__ - by Hadley Wickham
+__[R Packages](http://r-pkgs.org)__ , 2nd edition in progress - by Hadley Wickham and Jenny Bryan  
 
 ## Data Viz  
 
@@ -109,6 +113,7 @@ Class notes: __[Statistical Methods in Ecology](https://sakai.unc.edu/access/con
 
 Book: __[Learning Statistics with R](https://learningstatisticswithr.com)__ - by Danielle Navarro. Aimed at psychology researchers but has great motivating examples of why we even use statistics in the first place. Includes lots of clearly explained, worked examples using R code.  
 
+Book: __[ModernDive: Statistical Inference via Data Science](https://moderndive.com/index.html)__ - by Chester Ismay and Albert Y. Kim.  
 
 <br>
 <br>

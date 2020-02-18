@@ -24,3 +24,11 @@ Shannon Dunnigan, Guana Tolomato Matanzas NERR
 | 14:00 - 15:00     | Reshape Data                  |                                             |
 | **15:00 - 15:30** | **Afternoon Break**           | **Afternoon Break**                         |
 | 15:30 - 17:00     | Wrap-up, Questions, Challenge | Work with your own data                     |
+
+### Short links to live scripts:
+
+**Day 1:**  
+<http://bit.ly/gb2020-notes01>
+
+**Day 2:**  
+<http://bit.ly/gb2020-notes02>

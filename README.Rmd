@@ -23,10 +23,10 @@ Shannon Dunnigan, Guana Tolomato Matanzas NERR
 |                   | Visualize Data, part 1         |  | 
 | **10:00 - 10:30** | **Morning Break**              | **Morning Break** |  
 | 10:30 - 12:00     | Visualize Data, part 2         | Statistical Output basics |  
-|                   | Wrangle Data, part 1           |   |  
+|                   | Wrangle Data, part 1           | Setting up projects and workflows  |  
 | **12:00 - 13:00** | **Lunch**                      |  **Lunch** |
-| 13:00 - 14:00     | Wrangle Data, part 2           | Setting up projects and workflows |  
-| 14:00 - 15:00     | Reshape Data                   | Challenge, Wrap-up, work with your own data |   
+| 13:00 - 14:00     | Wrangle Data, part 2           | Challenge, Wrap-up, work with your own data |  
+| 14:00 - 15:00     | Reshape Data                   |  |   
 | **15:00 - 15:30** | **Afternoon Break**            | **Afternoon Break**
 | 15:30 - 17:00     | Wrap-up, Questions, Challenge  | Work with your own data |
 

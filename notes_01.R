@@ -182,3 +182,12 @@ wq_summary <- wq_trimmed %>%
               sd_sal = sd(sal, na.rm = TRUE))
 
 
+# data for pivoting
+fish <- read.csv(here::here("data", "guana_fish.csv"), stringsAsFactors = FALSE)
+# subset it
+fish_sub <- fish %>% 
+    select(Date,
+           Site,
+           Diel,
+           starts_with("Cteno"),
+           contains("penaeus"))

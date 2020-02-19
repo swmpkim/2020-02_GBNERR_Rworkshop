@@ -36,8 +36,21 @@ ebird_again <- ebird %>%
     filter(state %in% my_states)
 
 
+ebird %>%
+    filter(year < 2010,
+           state == "AK")
 
+your_turn_1 <- ebird %>%
+    filter(species == "American Coot",
+           year != 2010,
+           state %in% c("MS", "FL"))
     
     
+# DON'T do this:
+your_turn_1b <- ebird %>%
+    filter(species == "American Coot",
+           year != 2010,
+           state == c("MS", "FL"))
+
     
     

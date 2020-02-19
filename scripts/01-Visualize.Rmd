@@ -1,0 +1,159 @@
+---
+title: "Visualize Data"
+output:
+  html_document:
+    df_print: paged
+---
+
+<!-- This file by Shannon Dunnigan was adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
+
+```{r setup}
+library(tidyverse)
+library(here)
+```
+
+
+```{r loaddata}
+wq <- read.csv(here::here('data', 'monthly_wq.csv')) 
+
+dplyr::glimpse(wq)
+```
+
+## Quiz
+
+What relationship do you expect to see between temperature (temp) and dissolved oxygen (do_mgl)?
+
+## Your Turn 1
+
+Run the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!
+
+```{r}
+
+
+```
+
+## Your Turn 2
+
+Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.  
+
+```{r}
+ggplot(data = wq) + 
+  geom_point(mapping = aes(x = temp, y = do_mgl, 
+                           color = state, shape = coast,
+                           alpha = temp),
+             size = 5)
+
+```
+
+## Your Turn 3
+
+Using the `wq` data, plot temperature (`temp`) by `month` as a scatterplot and facet by `state` and `coast`. 
+Play around with `facet_grid()` and `facet_wrap()`. 
+
+*What kinds of things do you notice?*
+
+```{r}
+ggplot(data = wq) +
+  geom_point(mapping = aes(x = month, y = temp, color = coast)) +
+  facet_wrap( ~ station_code)
+
+```
+
+## Your Turn 4
+
+Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
+
+```{r}
+ggplot(data = wq) +
+  geom_point(mapping = aes(x = coast, y = temp)) 
+
+```
+
+## Your Turn 5
+
+Load the `diamonds` dataset and examine it. *ahem* Remember the `glimpse()` function? This data set contains prices and other attributes of diamonds and is provided by the `ggplot2` package.
+
+Create a bar chart of `cut` colored by `cut`. Use the cheatsheet. 
+
+```{r}
+diamonds
+
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, color = cut))
+
+ggplot(data = diamonds)+
+  geom_bar(mapping = aes(x = cut, fill = cut))
+
+```
+
+## Your Turn 6
+
+Determine what the default stat is for each of the following geoms:
+
+`geom_line()`
+`geom_density()`
+`geom_smooth()`
+
+```{r}
+?geom_point
+
+```
+
+## Your Turn 7
+
+Predict what this code will do. Then run it.
+
+```{r}
+a <-ggplot(wq) +
+  geom_point(aes(temp, do_mgl)) +
+  geom_smooth(aes(temp, do_mgl)) 
+a
+```
+
+## Your Turn 8 
+
+What does `getwd()` return?
+
+```{r}
+getwd()
+```
+
+## Your Turn 9
+
+Save the last plot and then locate it in the files pane.
+
+```{r}
+ggsave("do_by_temp.png", width = 6, height = 4, units = "in")
+```
+
+## MINI CHALLENGE
+
+Using the `diamonds` data make a scatterplot of `carat` by `price` and assign color by `clarity`. 
+Customize the themes and colors of the plot to make it the *ugliest* plot that you can. 
+Save this plot in your files pane.
+```{r ugly}
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price, colour = clarity)) +
+  scale_color_brewer(type = "div", palette = "RdGy") +
+  theme(panel.background = element_rect(color = "purple"),
+        axis.text = element_text(size = 20), 
+        plot.background = element_blank())
+```
+
+
+***
+
+# Take aways
+
+You can use this code template to make thousands of graphs with **ggplot2**.
+
+```{r, eval = FALSE}
+# ggplot(data = <DATA>) +
+#   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>),
+#                   stat = <STAT>,
+#                   position = <POSITION>) +
+#   <COORDINATE_FUNCTION> +
+#   <FACET_FUNCTION> +
+#   <SCALE_FUNCTION> +
+#   <THEME_FUNCTION>
+```

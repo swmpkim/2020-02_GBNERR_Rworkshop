@@ -174,3 +174,11 @@ sd(test)
 
 
 
+wq_summary <- wq_trimmed %>% 
+    group_by(station_code, month) %>% 
+    summarize(mean_temp = mean(temp, na.rm = TRUE),
+              sd_temp = sd(temp, na.rm = TRUE),
+              mean_sal = mean(sal, na.rm = TRUE),
+              sd_sal = sd(sal, na.rm = TRUE))
+
+

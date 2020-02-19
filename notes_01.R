@@ -110,3 +110,23 @@ is.na(wq$depth)
 
 !is.na(wq$depth)
 
+
+# create new column named depth_ft
+wq_trimmed2 <- wq_trimmed %>% 
+    mutate(depth_ft = depth * 3.28)
+head(wq_trimmed2)
+
+# modify existing depth column
+wq_trimmed3 <- wq_trimmed %>% 
+    mutate(depth = depth * 3.28)
+head(wq_trimmed3)
+
+
+wq_trimmed <- wq_trimmed %>% 
+    mutate(depth_ft = depth * 3.28)
+
+
+wq_trimmed <- wq_trimmed %>% 
+    mutate(monthday = paste(month, day, sep = "-"), 
+           meaningless = sal + temp, 
+           even_more_meaningless = meaningless + 5)

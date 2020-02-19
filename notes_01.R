@@ -131,13 +131,46 @@ wq_trimmed <- wq_trimmed %>%
            meaningless = sal + temp, 
            even_more_meaningless = meaningless + 5)
 
+# to remove objects from your environment,
+# use rm(object_to_remove)
 
-
+# to remove columns from a data frame, 
+# use select(-column_to_remove)
 wq_trimmed <- wq_trimmed %>% 
     select(-monthday, 
            -meaningless, 
            -even_more_meaningless) %>% 
     mutate(temp_f = (9/5)*temp + 32)
+
+
+# group by and summarize ---- 
+
+# one level: state
+# should result in 50 rows
+# (one for each state)
+ebird_grouped <- ebird %>%
+    group_by(state) %>%
+    summarize(mean_presence = mean(presence, na.rm = TRUE),
+              max_presence = max(presence, na.rm = TRUE)
+    )
+
+# can group on multiple levels
+ebird_grouped <- ebird %>%
+    group_by(state, species) %>%
+    summarize(mean_presence = mean(presence, na.rm = TRUE),
+              max_presence = max(presence, na.rm = TRUE)
+    )
+
+
+
+wq_trimmed %>% 
+    group_by(station_code) %>% 
+    summarize(mean_depth = mean(depth, na.rm = TRUE))
+
+
+test <- c(1, 2, 3, 4, 5)
+mean(test)
+sd(test)
 
 
 

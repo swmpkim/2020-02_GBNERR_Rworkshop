@@ -185,7 +185,7 @@ wq_summary <- wq_trimmed %>%
 
 # WHEN YOU GET BACK FROM BREAK
 # please copy the code below from the notes page
-# or just type it into your console
+# or just type it into your script window
 
 # pivoting ----
 fish <- read.csv(here::here("data", "guana_fish.csv"),
@@ -199,3 +199,22 @@ fish_sub <- fish %>%
            starts_with("Cteno"),
            contains("penaeus"))
 
+fish_long <- fish_sub %>% 
+    pivot_longer(4:8, names_to = "species",
+                 values_to = "count")
+
+ggplot(fish_long) +
+    geom_col(mapping = aes(x = species, y = count, fill = species)) +
+    facet_wrap(~ Site) +
+    theme(axis.text = element_text(angle = 90))
+
+# skipping a step.
+fish_sub %>% 
+    pivot_longer(4:8, names_to = "species",
+                 values_to = "count") %>%
+    ggplot() +
+        geom_col(mapping = aes(x = species, y = count, fill = species)) +
+        facet_wrap(~ Site) +
+        theme(axis.text = element_text(angle = 90))
+
+bit.ly/finalchallenge_day1

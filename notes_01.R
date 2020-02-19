@@ -130,3 +130,14 @@ wq_trimmed <- wq_trimmed %>%
     mutate(monthday = paste(month, day, sep = "-"), 
            meaningless = sal + temp, 
            even_more_meaningless = meaningless + 5)
+
+
+
+wq_trimmed <- wq_trimmed %>% 
+    select(-monthday, 
+           -meaningless, 
+           -even_more_meaningless) %>% 
+    mutate(temp_f = (9/5)*temp + 32)
+
+
+

@@ -74,3 +74,17 @@ head(ebird_select4)
 ebird_select5 <- ebird %>%
     select(year, everything())
 head(ebird_select5)
+
+
+your_turn_2 <- ebird %>% 
+    filter(state %in% c("FL", "AL", "MS"),
+           species == "American Coot") %>% 
+    select(state, year, presence)
+head(your_turn_2)
+
+# this will cause an error
+ebird %>% 
+    select(state, year, presence) %>% 
+    filter(state %in% c("FL", "AL", "MS"),
+           species == "American Coot")
+

@@ -159,7 +159,7 @@ pretty_plot2 <- function(data, x, y, color) {
                        y = {{ y }}, 
                        color = {{ color }}
                        )
-                   )
+        )
 }
 
 # example
@@ -180,9 +180,14 @@ pretty_plot2(data = wq_trimmed,
 
 # Loops ----
 
+# for each ____ in some group ____, do something
+
 # simple example; just printing members of a vector
 
 fruits <- c("apple", "banana", "canteloupe")
+
+length(fruits)
+class(fruits)
 
 for(i in 1:length(fruits)){
     print(fruits[i])
@@ -200,7 +205,7 @@ for(i in seq_along(fruits)){
 # Your Turn 3 ----
 
 # Imagine you've never heard of `ggplot2`'s `facet` capabilities, 
-# and you want to make a separate "`my_plot`" for each station in the datset.    
+# and you want to make a separate "`pretty_plot`" for each station in the datset.    
 
 
 # First, make a vector of unique `station_code`s in `wq_trimmed` 

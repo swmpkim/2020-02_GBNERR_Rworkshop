@@ -17,7 +17,7 @@ wq_trimmed <- wq %>%
 ebird <- read.csv(here::here("data", "eBird_workshop.csv"), stringsAsFactors = FALSE)
 
 ebird <- dplyr::distinct(ebird)
-
+# dates ----
 # data frame for dates
 date_practice <- tribble(
     ~iso8601, ~mdy, 
@@ -25,6 +25,20 @@ date_practice <- tribble(
     "2018-02-01", "02/01/18", 
     "2018-03-01", "03/01/18" 
 )
+
+glimpse(date_practice)
+library(lubridate)
+
+class(date_practice$iso8601)
+class(ymd(date_practice$iso8601))
+
+date_practice <-date_practice %>%
+    mutate(iso8601_asDate = ymd(iso8601),
+           mdy_asDate = mdy(mdy))
+glimpse(date_practice)
+
+
+
 
 # data frames for "class" work
 bio <- data.frame("Bobby" = c(100, 90, 100, 100, 100),

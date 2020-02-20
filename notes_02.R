@@ -224,6 +224,14 @@ my_stns <- unique(wq_trimmed$station_code)
     }
 
 
+# if you hate loops, check out:
+# purrr package
+# apply/lapply/tapply/sapply functions in base R
+
+
+
+
+
 
 
 

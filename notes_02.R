@@ -250,9 +250,84 @@ library(broom)
 
 # read in data - we'll start with a small dataset
 wq <- read.csv(here::here("data", "monthly_wq.csv"))
+
 wq_sub <- wq %>% 
     filter(state %in% c("Alaska", "Florida"))
 
+ggplot(wq_sub, aes(x = state, y = temp)) +
+    geom_boxplot()
 
 
+fl_temp <- wq_sub %>% 
+    filter(state == "Florida") %>% 
+    select(temp)
 
+ak_temp <- wq_sub %>% 
+    filter(state == "Alaska") %>% 
+    select(temp)
+
+# one-sample t-test;
+# compares the vector to 0
+t.test(fl_temp)
+
+# two-sample t-test
+t.test(fl_temp, ak_temp)
+
+t_out <- t.test(fl_temp, ak_temp)
+
+typeof(t_out)
+attributes(t_out)
+t_out$p.value
+
+t_pval <- t_out$p.value
+
+
+# ANOVA ----
+# is temperature different between states?
+# formulas in r:
+# y ~ x
+aov(temp ~ state, data = wq)
+# same thing:
+aov(wq$temp ~ wq$state)
+
+aov_out <- aov(temp ~ state, data = wq)
+typeof(aov_out)
+attributes(aov_out)
+
+summary(aov_out)
+aov_summ <- summary(aov_out)
+attributes(aov_summ)
+
+# broom turns our output into a data frame!
+broom::tidy(aov_out)
+aov_tidied <- broom::tidy(aov_out)
+aov_tidied$p.value
+
+
+# linear regression ----
+ggplot(wq) +
+    geom_point(aes(x = temp, y = do_mgl))
+
+# plot geom_smooth linear model
+ggplot(wq) +
+    geom_point(aes(x = temp, y = do_mgl)) +
+    geom_smooth(aes(x = temp, y = do_mgl),
+                method = "lm")
+
+# change the color and remove the sterr shading
+ggplot(wq) +
+    geom_point(aes(x = temp, y = do_mgl)) +
+    geom_smooth(aes(x = temp, y = do_mgl),
+                method = "lm",
+                color = "purple",
+                se = FALSE)
+
+
+lm(do_mgl ~ temp, data = wq)
+lm_out <- lm(do_mgl ~ temp, data = wq)
+typeof(lm_out)
+attributes(lm_out)
+summary(lm_out)
+
+lm_tidied <- broom::tidy(lm_out)
+lm_glanced <- broom::glance(lm_out)

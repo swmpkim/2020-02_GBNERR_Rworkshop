@@ -229,21 +229,30 @@ my_stns <- unique(wq_trimmed$station_code)
 # apply/lapply/tapply/sapply functions in base R
 
 
-
-
-
-
-
-
-
-
 # data frames for "class" work
-bio <- data.frame("Bobby" = c(100, 90, 100, 100, 100),
-                  "Joe" = c(90, 90, 80, 90, 90),
-                  "Susie" = c(90, 90, 80, 90, 90),
-                  "Jill" = c(100, 100, 100, 90, 100))
+# bio <- data.frame("Bobby" = c(100, 90, 100, 100, 100),
+#                   "Joe" = c(90, 90, 80, 90, 90),
+#                   "Susie" = c(90, 90, 80, 90, 90),
+#                   "Jill" = c(100, 100, 100, 90, 100))
+# 
+# english <- data.frame("Bobby" = c(90, 90, 80, 80, 90),
+#                       "Joe" = c(90, 90, 80, 100, 100),
+#                       "Susie" = c(80, 80, 90, 90, 90),
+#                       "Jill" = c(80, 90, 100, 90, 100))
 
-english <- data.frame("Bobby" = c(90, 90, 80, 80, 90),
-                      "Joe" = c(90, 90, 80, 100, 100),
-                      "Susie" = c(80, 80, 90, 90, 90),
-                      "Jill" = c(80, 90, 100, 90, 100))
+
+
+
+library(tidyverse)
+library(here)
+# install.packages("broom")
+library(broom)
+
+# read in data - we'll start with a small dataset
+wq <- read.csv(here::here("data", "monthly_wq.csv"))
+wq_sub <- wq %>% 
+    filter(state %in% c("Alaska", "Florida"))
+
+
+
+

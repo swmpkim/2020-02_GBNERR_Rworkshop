@@ -26,6 +26,8 @@ date_practice <- tribble(
     "2018-03-01", "03/01/18" 
 )
 
+
+
 glimpse(date_practice)
 library(lubridate)
 
@@ -36,6 +38,54 @@ date_practice <-date_practice %>%
     mutate(iso8601_asDate = ymd(iso8601),
            mdy_asDate = mdy(mdy))
 glimpse(date_practice)
+
+
+# functions ----
+
+mean(wq_trimmed$temp, na.rm = TRUE)
+mean
+mutate
+
+
+# standard error = stdev / sqrt(n)
+
+x <- c(0:10, 50)
+
+sd(x)
+length(x)
+
+sterr_x <- sd(x, na.rm = TRUE) / sqrt(length(x))
+
+# if we want to find standard error of
+# temp in the wq_trimmed data frame:
+x <- wq_trimmed$temp
+
+
+sterr <- function(x) {
+  sd(x, na.rm = TRUE) / sqrt(length(x))
+}
+
+
+sterr2 <- function(temp) {
+  sd(temp, na.rm = TRUE) / sqrt(length(temp))
+}
+
+sterr(x = wq_trimmed$temp)
+sterr(x = wq_trimmed$sal)
+
+
+a <- 5
+b <- 10
+
+aplusb <- function(a, b) {
+  a + b
+}
+
+aplusb(10, 20)
+
+
+
+
 
 
 

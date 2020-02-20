@@ -131,6 +131,26 @@ ggplot(data = wq_trimmed) +
     labs(title = "DO by temp")
 
 
+# embrace the arguments
+pretty_plot <- function(data, x, y, color, title) {
+  ggplot(data = data) +
+      geom_point(aes(x = {{ x }}, 
+                     y = {{ y }}, 
+                     color = {{ color }})) +
+      labs(title = title)
+}
+
+
+# THIS ISN'T WORKING YET ONLY USE CODE ABOVE
+pretty_plot <- function(data, x, y, color) {
+    ggplot(data = data) +
+        geom_point(aes(x = {{ x }}, 
+                       y = {{ y }}, 
+                       color = {{ color }})) +
+        labs(title = paste(as.character(x), "by", as.character(y)))
+}
+
+
 
 # data frames for "class" work
 bio <- data.frame("Bobby" = c(100, 90, 100, 100, 100),

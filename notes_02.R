@@ -131,7 +131,9 @@ ggplot(data = wq_trimmed) +
     labs(title = "DO by temp")
 
 
-# embrace the arguments
+# embrace the arguments {{ }}
+# a version where you have to provide a title
+# as a character string
 pretty_plot <- function(data, x, y, color, title) {
   ggplot(data = data) +
       geom_point(aes(x = {{ x }}, 
@@ -140,16 +142,39 @@ pretty_plot <- function(data, x, y, color, title) {
       labs(title = title)
 }
 
+# example
+pretty_plot(data = wq_trimmed, 
+            x = sal, 
+            y = temp, 
+            color = station_code, 
+            title = "Temperature by Salinity")
 
-# THIS ISN'T WORKING YET ONLY USE CODE ABOVE
-pretty_plot <- function(data, x, y, color) {
+
+
+# this version does *not* make a title
+# but you can add it in after
+pretty_plot2 <- function(data, x, y, color) {
     ggplot(data = data) +
         geom_point(aes(x = {{ x }}, 
                        y = {{ y }}, 
-                       color = {{ color }})) +
-        labs(title = paste(as.character(x), "by", as.character(y)))
+                       color = {{ color }}
+                       )
+                   )
 }
 
+# example
+pretty_plot2(data = wq_trimmed, 
+             x = sal, 
+             y = temp, 
+             color = station_code)
+
+# with title
+pretty_plot2(data = wq_trimmed, 
+            x = sal, 
+            y = temp, 
+            color = station_code) +
+    labs(title = "Temp by Salinity")
+    
 
 
 # data frames for "class" work

@@ -174,7 +174,54 @@ pretty_plot2(data = wq_trimmed,
             y = temp, 
             color = station_code) +
     labs(title = "Temp by Salinity")
+
+
+
+
+# Loops ----
+
+# simple example; just printing members of a vector
+
+fruits <- c("apple", "banana", "canteloupe")
+
+for(i in 1:length(fruits)){
+    print(fruits[i])
+}
+
+
+# another, safer way
+for(i in seq_along(fruits)){
+    print(fruits[i])
+}
+
+
+
+################################################################################
+# Your Turn 3 ----
+
+# Imagine you've never heard of `ggplot2`'s `facet` capabilities, 
+# and you want to make a separate "`my_plot`" for each station in the datset.    
+
+
+# First, make a vector of unique `station_code`s in `wq_trimmed` 
+# (Hint: look up the function `unique`).
+
+my_stns <- -------
     
+    
+    # Now, fill in the skeleton below of a loop to print out `my_plot` for each station.  
+    
+    for(i in ----(my_stns)){
+        wq_sub <- wq_trimmed %>% 
+            ------(station_code == my_stns[i])
+        
+        print(my_plot(wq_sub, sal, do_pct, station_code))
+    }
+
+
+
+
+
 
 
 # data frames for "class" work

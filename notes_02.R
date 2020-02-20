@@ -84,9 +84,51 @@ aplusb <- function(a, b) {
 aplusb(10, 20)
 
 
+# Your Turn 1 ----
+
+# Use `group_by`, `summarize`, and our new `sterr` function to 
+# generate a table of standard error by month, by station, for `temp_f`. 
+
+wq_sterr <- wq_trimmed %>% 
+    group_by(station_code, month) %>% 
+    summarize(mean_temp = mean(temp, na.rm = TRUE),
+              sd_temp = sd(temp, na.rm = TRUE),
+              se_temp = sterr(temp))
+
+# Now **you** write a function! 
+# Name it `divide_by_10`. 
+# The input should be a vector (like we did with `sterr`), and 
+# the output should be each value of that vector divided by 10.  
+
+# Remember to get it working *before* you wrap it up into a function.  
 
 
+divide_by_10 <- function(x){
+    x / 10
+}
 
+
+# YT1 part 3 
+# Now. What if we want to divide by something other than 10? 
+# Generalize the function to take two arguments as input. 
+# The second input (call it `y`) should be the denominator 
+# in your `divide_by` function. 
+
+
+divide_by <- function(x, y){
+    x / y
+}
+
+# set default values when defining arguments
+divide_by2 <- function(x, y = 10){
+    x / y
+}
+
+
+# functions involving graphs ----
+ggplot(data = wq_trimmed) +
+    geom_point(aes(x = temp, y = do_pct, color = station_code)) +
+    labs(title = "DO by temp")
 
 
 

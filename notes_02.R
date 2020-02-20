@@ -211,16 +211,16 @@ for(i in seq_along(fruits)){
 # First, make a vector of unique `station_code`s in `wq_trimmed` 
 # (Hint: look up the function `unique`).
 
-my_stns <- -------
+my_stns <- unique(wq_trimmed$station_code)
     
     
     # Now, fill in the skeleton below of a loop to print out `my_plot` for each station.  
     
-    for(i in ----(my_stns)){
+    for(i in seq_along(my_stns)){
         wq_sub <- wq_trimmed %>% 
-            ------(station_code == my_stns[i])
+            filter(station_code == my_stns[i])
         
-        print(my_plot(wq_sub, sal, do_pct, station_code))
+        print(pretty_plot2(wq_sub, sal, do_pct, station_code))
     }
 
 
